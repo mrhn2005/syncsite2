@@ -25,7 +25,7 @@
 			 <li class="active"><a href="/ghoghnoos">
 			    ققنوس
 			    </a></li>
-			<li><a href=""{{route('blog')}}">
+			<li><a href="{{route('blog')}}">
 			    تازه‌ها
 			 </a></li>    
 			

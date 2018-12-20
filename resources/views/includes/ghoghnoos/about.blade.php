@@ -53,33 +53,33 @@
 
 	    
 			<div class="member">
-					<a href="/photos/blog/15174150741.jpg" data-lightbox="image-12">
-						<img src="/photos/blog/15174150741.jpg" alt="img18"/>
+					<a href="/photos/ghoghnoos/toranj/1.jpg" data-lightbox="image-12">
+						<img src="/photos/ghoghnoos/toranj/1.jpg" alt="رویداد ترنج"/>
 					</a>
 			</div>
 			<div class="member">
-					<a href="/laravel-filemanager/blog/body/1/5.jpg" data-lightbox="image-12">
-						<img src="/laravel-filemanager/blog/body/1/5.jpg" alt="img18"/>
+					<a href="/photos/ghoghnoos/toranj/5.jpg" data-lightbox="image-12">
+						<img src="/photos/ghoghnoos/toranj/5.jpg" alt="رویداد ترنج"/>
 					</a>
 			</div>
 			<div class="member">
-					<a href="/laravel-filemanager/blog/body/1/2.jpg" data-lightbox="image-12">
-						<img src="/laravel-filemanager/blog/body/1/2.jpg" alt="img18"/>
+					<a href="/photos/ghoghnoos/toranj/2.jpg" data-lightbox="image-12">
+						<img src="/photos/ghoghnoos/toranj/2.jpg" alt="رویداد ترنج"/>
 					</a>
 			</div>
 			<div class="member">
-					<a href="/laravel-filemanager/blog/body/1/4.jpg" data-lightbox="image-12">
-						<img src="/laravel-filemanager/blog/body/1/4.jpg" alt="img18"/>
+					<a href="/photos/ghoghnoos/toranj/4.jpg" data-lightbox="image-12">
+						<img src="/photos/ghoghnoos/toranj/4.jpg" alt="رویداد ترنج"/>
 					</a>
 			</div>
 			<div class="member">
-					<a href="/laravel-filemanager/blog/body/1/8.jpg" data-lightbox="image-12">
-						<img src="/laravel-filemanager/blog/body/1/8.jpg" alt="img18"/>
+					<a href="/photos/ghoghnoos/toranj/8.jpg" data-lightbox="image-12">
+						<img src="/photos/ghoghnoos/toranj/8.jpg" alt="رویداد ترنج"/>
 					</a>
 			</div>
 			<div class="member">
-					<a href="/laravel-filemanager/blog/body/1/9.jpg" data-lightbox="image-12">
-						<img src="/laravel-filemanager/blog/body/1/9.jpg" alt="img18"/>
+					<a href="/photos/ghoghnoos/toranj/9.jpg" data-lightbox="image-12">
+						<img src="/photos/ghoghnoos/toranj/9.jpg" alt="رویداد ترنج"/>
 					</a>
 			</div>
 		

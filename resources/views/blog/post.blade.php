@@ -17,7 +17,7 @@
     .blog-post p{
     text-align:justify!important;
     color:#4d4d4d!important;
-    line-height:31px!important;
+    line-height:38px!important;
     font-size:16px!important;
 }
 blockquote {
@@ -49,20 +49,26 @@ th{
     list-style-type: square;
     margin: 20px;
     color:#4d4d4d;
-    line-height:26px;
+    line-height:33px;
     font-size:16px;
 }
 
+.blog-post li {
+    margin-bottom:20px;
+}
 .blog-post a{
     font-weight:bold;
 }
 .title a{
     font-size:120%!important;
-    line-height:50px!important;
 }
 
 .sidebar-content li{
     margin-bottom:18px;
+}
+
+.title a{
+    line-height:50px!important;
 }
 </style>
 @endsection
@@ -91,7 +97,7 @@ th{
 						<div class="blog-post" style="border: 2px #9C27B0 solid;">
 							<div class="post-img">
 								<a href="{{route('blog.post',$post->slug)}}">
-								<img src="/photos/blog/{{$post->photo}}" alt="">
+								<img src="/photos/blog/{{$post->photo}}" style="width:100%" alt="{{$post->slug}}">
 								</a>
 							</div>
 							<div class="post-content">

@@ -1,4 +1,4 @@
-<header  class="second-header navbar-collapse" style="">
+<header class="second-header" style="">
 	<div class="logo">
 		<a href="/index.php">
 		<img src="/assets/images/yaslogo.png" style="height:60px;" alt="">
@@ -7,7 +7,7 @@
 	<div class="mobile-menu">
 		<div class="line"></div>
 	</div>
-	<nav class="navbar-collapse">
+	<nav>
 		<ul class="menu" style="direction:rtl; ">
 			<li ><a href="/">
 			    یاس

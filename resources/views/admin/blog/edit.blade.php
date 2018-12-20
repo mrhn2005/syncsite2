@@ -62,7 +62,7 @@ jQuery(document).ready(function($) {
     <script>
         $('#tags').attr("value", "{{$post->tagNames}}");
         $('#tags').tagsInput({
-            autocomplete_url: "{{route('tags.autosearch')}}" 
+            autocomplete_url: "" 
             });
         
     </script>
