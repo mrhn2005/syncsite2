@@ -1,0 +1,405 @@
+@font-face {
+    font-family: 'BYekan';
+    src: url('../fonts/BYekan/Yekan.woff') format('woff');
+    
+}
+
+@font-face {
+    font-family: 'IranSans';
+    src: url('../fonts/IranSans/irsans.woff') format('woff');
+}
+body{
+    font-family: 'BYekan',"Raleway", sans-serif !important; 
+     overflow-x: hidden;
+    direction: rtl !important;
+}
+	body, html {
+    height: 100% !important;
+    margin: 0 !important;
+}
+
+/*header nav .menu li a {*/
+/*    font-size:17px;*/
+/*}*/
+
+figure{
+    margin:10px;
+    overflow:hidden;
+}
+
+/*modal*/
+.modal {
+  /*position: fixed;*/
+  /*top: 0;*/
+  /*right: 0;*/
+  /*bottom: 0;*/
+  /*left: 0;*/
+  padding-right:0 !important;
+  overflow: auto;
+  z-index:99999;
+}
+
+.modal-dialog {
+  position: fixed;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.modal-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow:auto;
+  /*border: 2px solid #3c7dcf;*/
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/*.modal-header {*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  right: 0;*/
+/*  left: 0;*/
+/*  height: 50px;*/
+/*  padding: 10px;*/
+/*  background: #6598d9;*/
+/*  border: 0;*/
+/*}*/
+
+/*.modal-title {*/
+/*  font-weight: 300;*/
+/*  font-size: 2em;*/
+/*  color: #fff;*/
+/*  line-height: 30px;*/
+/*}*/
+
+/*.modal-body {*/
+/*  position: absolute;*/
+/*  top: 50px;*/
+/*  bottom: 60px;*/
+/*  width: 100%;*/
+/*  font-weight: 300;*/
+/*  overflow: auto;*/
+/*}*/
+
+/*.modal-footer {*/
+/*  position: absolute;*/
+/*  right: 0;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  height: 60px;*/
+/*  padding: 10px;*/
+/*  background: #f1f3f5;*/
+/*}*/
+.close-modal {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    background-color: transparent;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+}
+.close-modal .lr {
+    height: 75px;
+    width: 1px;
+    margin-left: 35px;
+    background-color: #222;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    z-index: 99999999;
+}
+
+.close-modal .lr .rl {
+    height: 75px;
+    width: 1px;
+    background-color: #222;
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    z-index: 99999999;
+}
+/*.modal-open{*/
+/*  padding-right: 0 !important;*/
+/*}*/
+/*modal*/
+
+/*@media screen and (max-width: 1200px) {*/
+/*    header .mobile-menu {*/
+/*    display: block;}*/
+/*}*/
+
+a:hover{
+    
+    text-decoration: none;
+
+}
+
+.btn1{
+        padding-right: 15px;
+    padding-left: 15px;
+}
+
+.member h3{
+    color:#9C27B0;
+}
+.testimonials-inner h3{
+  color:#9C27B0 !important;  
+}
+
+.gm-style .gm-style-iw {
+    text-align: center;
+   font-size: 16px;
+   font-weight: bold;
+   font-family: 'BYekan';
+   text-transform: uppercase;
+}
+
+
+.w-tabs-section-header-h{
+    margin-top:20px;
+    font-size:19px;
+}
+
+.contact-form .col-md-4{
+    padding-left: 0px;
+    padding-right: 0px;
+    
+}
+/*.contact-form .col-sm-4{*/
+    
+    
+/*    padding-left: 0px;*/
+/*    padding-right: 0px;*/
+/*    float:right;*/
+/*}*/
+
+.myAlert-top{
+    font-size:20px;
+    position: fixed;
+    top: 85px; 
+    right:35%;
+    width: 30%;
+    text-align: center;
+  direction: rtl;
+  display: none;
+}
+.myAlert-corner{
+    font-size:20px;
+    position: fixed;
+    top: 75%; 
+    right:2%;
+    /*width: 30%;*/
+    text-align: center;
+  direction: rtl;
+  z-index:99;
+  background-color:thistle;
+  color:grey;
+  
+}
+.myAlert-corner a{
+    color:indigo !important;
+}
+.myAlert-corner a:hover{
+    color:darkviolet !important;
+}
+
+@media only screen and (max-width: 720px) {
+    #top-h {
+        font-size:250% !important;
+    }
+
+    #top-p {
+        font-size:150% !important;
+    }
+    .btn-1{
+        font-size:120% !important;
+    }
+
+}
+
+.centered-axis-x {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top:90%;
+    z-index:6;
+    font-size:38px;
+    color:white
+}
+.centered-axis-x:visited{
+    color:white !important;
+}
+.centered-axis-x:active{
+    color:white !important;
+}
+
+.centered-axis-x:hover{
+    color:white !important;
+}
+
+#arrow-down{
+    color:white !important;
+}
+.bold{
+    font-weight: bold;
+    font-size:19px;
+    color:#777;
+}
+
+th{
+    text-align: right !important;
+}
+ #counter{
+     font-size:23px;
+ }
+.btn-format{
+    font-size:17px !important;
+    letter-spacing: 0px;
+    margin-bottom: 30px;
+    padding:12px;
+}
+.btn-format1{
+    border-color: red
+}
+
+.btn-format1:active{
+    border-color: red
+}
+
+ textarea { resize: vertical; }
+ 
+ footer .right-side span {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+    color: white;
+    
+    text-align: center;
+}
+
+.owl-three img{
+    padding:20%;
+}
+
+.owl-one .member{
+    padding:10%;
+}
+
+.hover-startup:hover{
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
+    transform: rotate(360deg) scale(1.1) ;
+    transition: transform .5s ease;
+
+}
+
+.hover-startup-name:hover{
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
+    transform: scale(1.2);
+    transition: transform .5s ease;
+
+}
+
+.bg {
+    /* The image used */
+    background-color: white;
+    /*background-image: url("/img/slider/4.jpg");*/
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: 5% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#sidenav{
+    position: fixed;
+    left:10px;
+    bottom: 10px;
+    font-size:38px;
+    cursor:pointer;
+    z-index:99999;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #9C27B0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align:center;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+
+}
+
+.sidenav a:hover{
+    color: rgb(255, 214, 88);
+    /*font-weight: bold;*/
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+#mySidenav{
+    z-index: 999999;
+}
+
+.nav{
+    background-color: inherit;
+}
+.nav>li>a:focus, .nav>li>a:hover{
+    background-color: inherit;
+}
+.nav  li{
+    display:block !important;
+}
+.nav>li>ul>li>a {
+    color:#b2b2b2;
+}
+.nav>li>ul>li>a:hover {
+    font-weight:bold;
+}
+
+@media screen and (max-width: 800px) {
+    .nav a{
+        font-size:130%;
+    }
+    .nav ul li a{
+        font-size:115%;
+    }
+
+}
+
+.help-block ul{
+    padding-right:0px;
+}

@@ -1,0 +1,60 @@
+Publishing the Voyager assets, database, and config files
+Copied Directory [/vendor/tcg/voyager/publishable/assets] To [/public/vendor/tcg/voyager/assets]
+Publishing complete.
+Copied Directory [/vendor/tcg/voyager/publishable/database/seeds] To [/database/seeds]
+Publishing complete.
+Publishing complete.
+Migrating the database tables into your application
+Migrating: 2016_01_01_000000_add_voyager_user_fields
+Migrated:  2016_01_01_000000_add_voyager_user_fields
+Migrating: 2016_01_01_000000_create_data_types_table
+Migrated:  2016_01_01_000000_create_data_types_table
+Migrating: 2016_05_19_173453_create_menu_table
+Migrated:  2016_05_19_173453_create_menu_table
+Migrating: 2016_10_21_190000_create_roles_table
+Migrated:  2016_10_21_190000_create_roles_table
+Migrating: 2016_10_21_190000_create_settings_table
+Migrated:  2016_10_21_190000_create_settings_table
+Migrating: 2016_11_30_135954_create_permission_table
+Migrated:  2016_11_30_135954_create_permission_table
+Migrating: 2016_11_30_141208_create_permission_role_table
+Migrated:  2016_11_30_141208_create_permission_role_table
+Migrating: 2016_12_26_201236_data_types__add__server_side
+Migrated:  2016_12_26_201236_data_types__add__server_side
+Migrating: 2017_01_13_000000_add_route_to_menu_items_table
+Migrated:  2017_01_13_000000_add_route_to_menu_items_table
+Migrating: 2017_01_14_005015_create_translations_table
+Migrated:  2017_01_14_005015_create_translations_table
+Migrating: 2017_01_15_000000_make_table_name_nullable_in_permissions_table
+Migrated:  2017_01_15_000000_make_table_name_nullable_in_permissions_table
+Migrating: 2017_03_06_000000_add_controller_to_data_types_table
+Migrated:  2017_03_06_000000_add_controller_to_data_types_table
+Migrating: 2017_04_21_000000_add_order_to_data_rows_table
+Migrated:  2017_04_21_000000_add_order_to_data_rows_table
+Migrating: 2017_07_05_210000_add_policyname_to_data_types_table
+Migrated:  2017_07_05_210000_add_policyname_to_data_types_table
+Migrating: 2017_08_05_000000_add_group_to_settings_table
+Migrated:  2017_08_05_000000_add_group_to_settings_table
+Migrating: 2017_11_26_013050_add_user_role_relationship
+Migrated:  2017_11_26_013050_add_user_role_relationship
+Migrating: 2017_11_26_015000_create_user_roles_table
+Migrated:  2017_11_26_015000_create_user_roles_table
+Migrating: 2018_03_11_000000_add_user_settings
+Migrated:  2018_03_11_000000_add_user_settings
+Migrating: 2018_03_14_000000_add_details_to_data_types_table
+Migrated:  2018_03_14_000000_add_details_to_data_types_table
+Migrating: 2018_03_16_000000_make_settings_value_nullable
+Migrated:  2018_03_16_000000_make_settings_value_nullable
+Attempting to set Voyager User model as parent to App\User
+Dumping the autoloaded files and reloading all new files
+Adding Voyager routes to routes/web.php
+Seeding data into the database
+Copied File [/vendor/tcg/voyager/publishable/config/voyager.php] To [/config/voyager.php]
+Publishing complete.
+Setting up the hooks
+Copied File [/vendor/larapack/hooks/publishable/config/hooks.php] To [/config/hooks.php]
+Publishing complete.
+Hooks are now ready to use! Go ahead and try to "php artisan hook:install test-hook"
+Adding the storage symlink to your public folder
+The [public/storage] directory has been linked.
+Successfully installed Voyager! Enjoy
