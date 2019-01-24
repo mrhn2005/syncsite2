@@ -11,6 +11,8 @@ use App\Mail\GardeshkarRequested;
 use App\Mail\EventRequested;
 use App\Mail\ServiceRequested;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cookie;
+
 use App\BlogPost;
 use App\Event;
 use App\Mode;
@@ -25,12 +27,15 @@ use App\EventRequest;
 use App\HomaUpload;
 use App\WorkshopRequest;
 use App\GardeshkarRequest;
-
+use App\Visit;
+use App\Toofan;
 
 use Telegram\Bot\Laravel\Facades\Telegram;
 use Telegram\Bot\Api;
 use App\Gallery;
 
+use Request as Req;
+use Session;
 class HomeController extends Controller
 {
     
@@ -379,5 +384,44 @@ class HomeController extends Controller
         $url="https://api.telegram.org/bot474519939:AAG5rMmZ3WtfKCVtUnp_hoTshxPUt9HSX98/sendMessage?chat_id=-221592990&text=salamdustan";
         $update = file_get_contents($url);
         print_r($update);
+    }
+    
+    
+    public function toofan(Request $request){
+        $visit=new Visit;
+        $visit->session_id=session()->getId();
+        $visit->ip=Req::ip();
+        
+        $visit->cookie= Cookie::get('visited');
+        if(array_key_exists('HTTP_REFERER', $_SERVER)){
+            // return Req::server('HTTP_REFERER');
+            $visit->referer=$_SERVER["HTTP_REFERER"];
+        }
+        
+        if(isset($request->team)){
+            $visit->team=$request->team;
+        }
+        $visit->save();
+        // $cookie=0;
+        // $cookie = Cookie::make('visited',1, 600000);
+        // dd(Cookie::get('visited'));
+        $visit_id=$visit->id;
+        $response = new \Illuminate\Http\Response(view('toofan.register',compact('visit_id')));
+        $response->withCookie(cookie('visited',1, 600000));
+        return $response;
+        return view('toofan.register');
+    }
+    
+    
+    public function toofan_register(Request $request){
+        Toofan::create($request->all());
+        
+        return redirect()->route('thankyou')->with([
+           'success'=>'
+           از ثبت نام شما  در یاس سپاسگزاریم.
+           <br>
+           به زودی با شما تماس گرفته خواهد شد.
+           '
+           ]); 
     }
 }
