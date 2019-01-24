@@ -139,6 +139,7 @@ Route::group([
 
 Route::get('/toofan','HomeController@toofan')->name('toofan');
 Route::post('/toofan','HomeController@toofan_register')->name('toofan.register');
+Route::get('/toofan/ranking','HomeController@toofan_ranking')->name('toofan.ranking');
 
 Route::group(['prefix' => 'vadmin'], function () {
     Voyager::routes();

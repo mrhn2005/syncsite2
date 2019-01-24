@@ -29,6 +29,7 @@ use App\WorkshopRequest;
 use App\GardeshkarRequest;
 use App\Visit;
 use App\Toofan;
+use App\Group;
 
 use Telegram\Bot\Laravel\Facades\Telegram;
 use Telegram\Bot\Api;
@@ -399,7 +400,7 @@ class HomeController extends Controller
         }
         
         if(isset($request->team)){
-            $visit->team=$request->team;
+            $visit->group_id=$request->team;
         }
         $visit->save();
         // $cookie=0;
@@ -423,5 +424,18 @@ class HomeController extends Controller
            به زودی با شما تماس گرفته خواهد شد.
            '
            ]); 
+    }
+    
+    
+    public function toofan_ranking(){
+        $groups=Group::all();
+        $visits=[];
+        $i=0;
+        foreach($groups as $group){
+            $visits[$i]=$group->visits->where('cookie',Null)->unique('ip')->unique('session_id')->count();
+            $i=$i+1;
+        }
+        return view('toofan.ranking',compact('groups'));
+        return $groups->sortBy('UniqueVisits');
     }
 }
