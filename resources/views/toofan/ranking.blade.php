@@ -42,7 +42,7 @@
                        رتبه تیم ها
                    </h2>
                    <ul style="list-style:none;font-size:140%">
-                   @foreach($groups as $group)
+                   @foreach($groups->sortByDesc('visitor') as $group)
                        <li>{{$loop->iteration}}) {{$group->name}}</li>
                    @endforeach
                    </ul>

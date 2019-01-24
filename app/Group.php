@@ -8,21 +8,22 @@ class Group extends Model
 {
     
     protected $appends = [
-        'UniqueVisits',
+        'visitor',
     ];
     
     public function visits(){
       return $this->hasMany('App\Visit');  
     }
     
-    public function unique_visits(){
-        $this->visits->where('cookie',Null)->unique('ip')->unique('session_id')->count();
-    }
+    // public function unique_visits(){
+    //     return $this->visits->where('cookie',Null)->unique('ip')->unique('session_id')->count();
+    // }
     
-    public function getUniqueVisitsAttribute(){
-        $visits= $this->visits->where('cookie',Null)->unique('ip')->unique('session_id')->count();
+    public function getVisitorAttribute(){
         
-        return $this->attributes['UniqueVisits']=$visits;
+        $visits= $this->visits->where('cookie','!=',1)->unique('ip')->unique('session_id')->count();
+        
+        return $this->attributes['visitor']=$visits;
     }
     
 }

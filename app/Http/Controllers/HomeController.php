@@ -429,13 +429,21 @@ class HomeController extends Controller
     
     public function toofan_ranking(){
         $groups=Group::all();
-        $visits=[];
-        $i=0;
-        foreach($groups as $group){
-            $visits[$i]=$group->visits->where('cookie',Null)->unique('ip')->unique('session_id')->count();
-            $i=$i+1;
-        }
+        //  $group2=$groups1->sortByDesc('visitor');
+        //  dd($group2);
+        // $group2 = $groups1->map(function ($user) {
+        //     return collect($user->toArray())
+        //         ->only([ 'name', 'visitor'])
+        //         ->all();
+        // });
+        
+    //   return  $group2;
+    //     $groups=$groups1->sortByDesc(function($group)
+    //     {
+    //       return $group->visitor;
+    //     });
+        
         return view('toofan.ranking',compact('groups'));
-        return $groups->sortBy('UniqueVisits');
+        // return $groups;
     }
 }
