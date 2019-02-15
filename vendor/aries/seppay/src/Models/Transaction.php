@@ -12,7 +12,10 @@ class Transaction extends Model {
         'participant_id',
         'status'
     ];
-
+    
+    public function participant(){
+        return $this->belongsTo('App\Participant');
+    }
     public function payable()
     {
         return $this->morphTo();

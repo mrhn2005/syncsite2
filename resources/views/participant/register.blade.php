@@ -18,6 +18,8 @@
 }
 
 .discount-butt{
+      height: 54px;
+    padding-top: 7px;
   margin: 0px !important;
     width:60px!important;
     color:white!important;
@@ -171,7 +173,7 @@
               					    <input type="text" class="form-control discount-code discount-input" id="discount-code" style="border-left: none;height: 54px;" placeholder="کد تخفیف دارید؟">
               					    <div class="input-group-btn">
               					      <a class="btn btn-default discount-code discount-butt" href="#"   title="اعمال">
-              					        <i class="fa fa-check" style="vertical-align:top"></i>
+              					        <i class="fa fa-check" style="vertical-align:top;font-size: 35px;"></i>
               					      </a>
               					    </div>
               					  </div>

@@ -10,7 +10,7 @@
 @section('content')
         <section id="main-content">
             <section class="wrapper">
-                <div class="row" style="margin-right:10px;">
+                <div class="row" style="margin-right:10px;font-size:70%">
                     
                      <h1 class="page-header">
                       ثبت نام کنندگان
@@ -55,6 +55,12 @@
                                 <th>
                                     کد پیگیری
                                 </th>
+                                <th>
+                                    نام سازمان
+                                </th>
+                                <th>
+                                    سمت
+                                </th>
                                
                           </tr>
                         </thead>
@@ -68,14 +74,15 @@
                                    <td>{{$participant->last_name}}</td>
                                    <td>{{$participant->phone}}</td>
                                    <td>{{$participant->email}}</td>
-                                   <td>{{$participant->event->name}}</td>
+                                   <td>{{str_limit($participant->event->name, 18)}}</td>
                                    <td>{{count($participant->transaction)?$participant->transaction->status:''}}</td>
                                    <td>{{$participant->know}}</td>
                                    <td>{{$participant->field}}</td>
                                    <td>{{$participant->degree}}</td>
                                    <td>{{$participant->city}}</td>
-                                   <td>{{$participant->transaction->factorNumber}}</td>
-                                   
+                                   <td>{{count($participant->transaction)?$participant->transaction->factorNumber:''}}</td>
+                                   <td>{{$participant->organization}}</td>
+                                   <td>{{$participant->position}}</td>
                                 </tr>
                                 <?php $i=$i+1; ?>
                             @endforeach

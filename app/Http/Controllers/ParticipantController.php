@@ -119,6 +119,13 @@ class ParticipantController extends Controller
                             $code->save();
                             
                         }
+                        $transaction=Transaction::create([
+                'amount'        =>  $amount,
+                'transId'       =>  1,
+                'factorNumber'  =>  $factor_number,
+                'participant_id'  =>  $participant->id,
+                'status' =>"SUCCESS",
+            ]);
                 return redirect()->route('thankyou')->with(['success'=>'
                      پرداخت شما با موفقیت انجام شد.
                      از ثبت نام شما سپاسگزاریم.
@@ -139,11 +146,12 @@ class ParticipantController extends Controller
             // $pay->factorNumber($factor_number);
             // $pay->callback(url('/payment/verify'));
             // $response = $pay->ready();
-            session([
-             'Authority' => $results['Authority'],
-             'amount' =>$amount,
-             'factornumber' => $factor_number,
-            ]);
+            // session([
+            //  'Authority' => $results['Authority'],
+            //  'amount' =>$amount,
+            //  'factornumber' => $factor_number,
+            //  'participant'=>$participant
+            // ]);
             
             $transaction=Transaction::create([
                 'amount'        =>  $amount,
@@ -179,17 +187,19 @@ class ParticipantController extends Controller
     public function callback()
     {
         try {
-            $participant=session('participant');
+            
             $factorNumber=session('factornumber');
+            
             if ($_GET['Status'] == 'OK') {
                 $transId=$_GET['Authority'];
-                $result=Zarinpal::verify($_GET['Status'],session('amount')/10,$_GET['Authority']);
+                $transaction=Transaction::with('participant')->where('transId',(int)$transId)->first();
+                $result=Zarinpal::verify($_GET['Status'],$transaction->amount/10,$_GET['Authority']);
                 
-                $transaction=Transaction::where('transId',(int)$transId)->first();
+                $participant=$transaction->participant;
                 
-                $transaction->status=="SUCCESS";
-                $transaction->save();
-                // "
+                $transaction->status="SUCCESS";
+                $transaction->update();
+                // return session('amount')/10;
                 if($result['Status'] == "success"){
                     
                         if(!empty($participant->promocode)){
@@ -202,7 +212,7 @@ class ParticipantController extends Controller
                         try{
                             //  Mail::to($participant->email)->bcc(['mrhn2005@gmail.com','h.goudarzyen@gmail.com'])->send(new ParticipantRegistered($participant));
                             Mail::to($participant->email)->bcc('mrhn2005@gmail.com')->send(new ParticipantRegistered($participant));
-                            //  Mail::to(['h.goudarzyen@gmail.com','zslesani@gmail.com'])->bcc('mrhn2005@gmail.com')->send(new ParticipantRegisteredAdmin($participant));
+                            Mail::to(['info@yasidea.ir'])->bcc('mrhn2005@gmail.com')->send(new ParticipantRegisteredAdmin($participant));
                             // session()->forget('participant');
                         }catch(\Exception $e){
                             
@@ -213,7 +223,7 @@ class ParticipantController extends Controller
                      از ثبت نام شما سپاسگزاریم.
                      <br>'.'
                      کد رهگیری:
-                     <br>'.$factorNumber
+                     <br>'.$transaction->factorNumber
                          ]);
                 }
             }
