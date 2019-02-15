@@ -61,6 +61,9 @@
                                 <th>
                                     سمت
                                 </th>
+                                <th>
+                                   مبلغ پرداختی
+                                </th>
                                
                           </tr>
                         </thead>
@@ -83,6 +86,7 @@
                                    <td>{{count($participant->transaction)?$participant->transaction->factorNumber:''}}</td>
                                    <td>{{$participant->organization}}</td>
                                    <td>{{$participant->position}}</td>
+                                   <td>{{count($participant->transaction)?$participant->transaction->amount:''}}</td>
                                 </tr>
                                 <?php $i=$i+1; ?>
                             @endforeach

@@ -121,7 +121,7 @@ class ParticipantController extends Controller
                         }
                         $transaction=Transaction::create([
                 'amount'        =>  $amount,
-                'transId'       =>  1,
+                'transId'       =>  $factor_number,
                 'factorNumber'  =>  $factor_number,
                 'participant_id'  =>  $participant->id,
                 'status' =>"SUCCESS",
