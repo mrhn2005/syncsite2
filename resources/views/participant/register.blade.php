@@ -63,7 +63,7 @@
         				</h2>
         			</div>
         		</div>
-        		<div class="col-md-8 col-md-offset-2 about-info" sytle="">
+        		<div class="col-md-8 col-md-offset-2 about-info" >
 
 			<p style="font-size:17px;text-align:justify; color:#888888" >
     			{{$event->desc}}
@@ -168,7 +168,7 @@
               						
               					  <div class="input-group">
               					  	
-              					    <input type="text" class="form-control discount-code discount-input" id="discount-code" style="border-left: none;height: 54px;" required placeholder="کد تخفیف دارید؟">
+              					    <input type="text" class="form-control discount-code discount-input" id="discount-code" style="border-left: none;height: 54px;" placeholder="کد تخفیف دارید؟">
               					    <div class="input-group-btn">
               					      <a class="btn btn-default discount-code discount-butt" href="#"   title="اعمال">
               					        <i class="fa fa-check" style="vertical-align:top"></i>
@@ -180,7 +180,7 @@
               					<br>
               					<input type="hidden" id="hidden-code" name="promocode" value="">
               					<div class="col-md-12">
-                        <div id="" class="text-center">
+                        <div  class="text-center">
                             <p style="font-size:150%;font-weight:bold;margin-top:30px">
                                 هزینه ثبت نام:
                                 <span id="event-price">{{$event->price}}</span>
@@ -189,8 +189,8 @@
                             
                         </div>
                         </div>
-                        <div id="" class="text-center">
-                            <button style="width:50%;font-weight:bold;" type="submit" style="margin-top:10px;font-weight:bold" class="button btn-primary   btn-format">
+                        <div  class="text-center">
+                            <button style="width:50%;font-weight:bold;margin-top:10px;" type="submit" class="button btn-primary   btn-format">
                                پرداخت آنلاین و ثبت نام
                             </button>
                         </div>

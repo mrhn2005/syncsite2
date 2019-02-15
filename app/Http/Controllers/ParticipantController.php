@@ -48,11 +48,10 @@ class ParticipantController extends Controller
         
         $participant=Participant::create($request->all());
         
-        session([
-         'participant' => $participant,
-         'promocode' =>$request->promocode,
-         ]);
         
+        session([
+             'participant'=>$participant
+            ]);
          
     
         $factor_number = time();
@@ -112,23 +111,43 @@ class ParticipantController extends Controller
             $amount=($amount-$discount)*10;
             
         }
-        
+        if($amount==0){
+                 if(!empty($participant->promocode)){
+                            
+                            $code=Promocode::where('code',$participant->promocode)->first();
+                            $code->uses=$code->uses+1;
+                            $code->save();
+                            
+                        }
+                return redirect()->route('thankyou')->with(['success'=>'
+                     پرداخت شما با موفقیت انجام شد.
+                     از ثبت نام شما سپاسگزاریم.
+                     <br>'.'
+                     کد رهگیری:
+                     <br>'.$factor_number
+                         ]);
+             }
         // return $amount;
         try {
             $results = Zarinpal::request(
-                "url('/payment/verify')",          //required
+                url('/payment/verify'),          //required
                 $amount/10,                                  //required
                 'مرکز نوآوری یاس'               //required
             );
-            // $pay = new Pay();
+            // $pay = new Pay();f
             // $pay->amount($amount);
             // $pay->factorNumber($factor_number);
             // $pay->callback(url('/payment/verify'));
             // $response = $pay->ready();
+            session([
+             'Authority' => $results['Authority'],
+             'amount' =>$amount,
+             'factornumber' => $factor_number,
+            ]);
             
             $transaction=Transaction::create([
                 'amount'        =>  $amount,
-                'transId'       =>  $response->transId,
+                'transId'       =>  $results['Authority'],
                 'factorNumber'  =>  $factor_number,
                 'participant_id'  =>  $participant->id
             ]);
@@ -140,9 +159,9 @@ class ParticipantController extends Controller
              */
              
              Zarinpal::redirect(); // redirect user to zarinpal
-
+            
                 // after that verify transaction by that $results['Authority']
-             Zarinpal::verify('OK',1000,$results['Authority']);
+            //  Zarinpal::verify('OK',1000,$results['Authority']);
                 
             // return $pay->start();
 
@@ -160,34 +179,47 @@ class ParticipantController extends Controller
     public function callback()
     {
         try {
-            
-            // $pay = new Pay();
-            // $response = $pay->verify();
-            $response=Zarinpal::verify('OK',1000,$results['Authority']);
-            return $resoonse;
-            if($response->status==1){
-                    $participant=session('participant');
-                    try{
-                        //  Mail::to($participant->email)->bcc(['mrhn2005@gmail.com','h.goudarzyen@gmail.com'])->send(new ParticipantRegistered($participant));
-                        Mail::to($participant->email)->bcc('mrhn2005@gmail.com')->send(new ParticipantRegistered($participant));
-                        //  Mail::to(['h.goudarzyen@gmail.com','zslesani@gmail.com'])->bcc('mrhn2005@gmail.com')->send(new ParticipantRegisteredAdmin($participant));
-                        session()->forget('participant');
-                    }catch(\Exception $e){
-                        
-                    }
+            $participant=session('participant');
+            $factorNumber=session('factornumber');
+            if ($_GET['Status'] == 'OK') {
+                $transId=$_GET['Authority'];
+                $result=Zarinpal::verify($_GET['Status'],session('amount')/10,$_GET['Authority']);
+                
+                $transaction=Transaction::where('transId',(int)$transId)->first();
+                
+                $transaction->status=="SUCCESS";
+                $transaction->save();
+                // "
+                if($result['Status'] == "success"){
                     
-                   
-                 return redirect()->route('thankyou')->with(['success'=>'
-                 پرداخت شما با موفقیت انجام شد.
-                 از ثبت نام شما سپاسگزاریم.
-                 <br>'.'
-                 کد رهگیری:
-                 <br>'.$participant->transaction->factorNumber
-                     ]);
+                        if(!empty($participant->promocode)){
+                            
+                            $code=Promocode::where('code',$participant->promocode)->first();
+                            $code->uses=$code->uses+1;
+                            $code->save();
+                            
+                        }
+                        try{
+                            //  Mail::to($participant->email)->bcc(['mrhn2005@gmail.com','h.goudarzyen@gmail.com'])->send(new ParticipantRegistered($participant));
+                            Mail::to($participant->email)->bcc('mrhn2005@gmail.com')->send(new ParticipantRegistered($participant));
+                            //  Mail::to(['h.goudarzyen@gmail.com','zslesani@gmail.com'])->bcc('mrhn2005@gmail.com')->send(new ParticipantRegisteredAdmin($participant));
+                            // session()->forget('participant');
+                        }catch(\Exception $e){
+                            
+                        }
+                        
+                     return redirect()->route('thankyou')->with(['success'=>'
+                     پرداخت شما با موفقیت انجام شد.
+                     از ثبت نام شما سپاسگزاریم.
+                     <br>'.'
+                     کد رهگیری:
+                     <br>'.$factorNumber
+                         ]);
+                }
             }
-            /*
-             * if verification was successful you can send order for your customer
-             */
+                
+            return redirect()->back()->with(['fail'=>'خطا در انجام عملیات']);
+            
         } catch (\Exception $e) {
 
             return redirect()->back()->with(['fail'=>$e->getMessage()]);

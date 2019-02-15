@@ -7,7 +7,7 @@ use Aries\Seppay\Models\Transaction;
 
 class Participant extends Model
 {
-    protected $guarded = ['promocode'];
+    protected $guarded = [];
     
     protected $appends = [
         'Status',

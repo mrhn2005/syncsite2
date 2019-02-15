@@ -9,7 +9,8 @@ class Transaction extends Model {
         'amount',
         'transId',
         'factorNumber',
-        'participant_id'
+        'participant_id',
+        'status'
     ];
 
     public function payable()
