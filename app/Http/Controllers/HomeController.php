@@ -30,6 +30,7 @@ use App\GardeshkarRequest;
 use App\Visit;
 use App\Toofan;
 use App\Group;
+use App\Promocode;
 
 use Telegram\Bot\Laravel\Facades\Telegram;
 use Telegram\Bot\Api;
@@ -446,4 +447,7 @@ class HomeController extends Controller
         return view('toofan.ranking',compact('groups'));
         // return $groups;
     }
+    
+    
+    
 }

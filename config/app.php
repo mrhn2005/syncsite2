@@ -124,6 +124,7 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -184,6 +185,7 @@ return [
          Swatkins\LaravelGantt\GanttServiceProvider::class,
          Aries\Seppay\SeppayServiceProvider::class,
          \Conner\Tagging\Providers\TaggingServiceProvider::class,
+         Zarinpal\Laravel\ZarinpalServiceProvider::class,
     ],
 
     /*

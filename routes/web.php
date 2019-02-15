@@ -16,11 +16,12 @@ Route::group([
     
     
 ], function () {
+Route::post('/code_check', ['as'=>'check.code', 'uses'=>'ParticipantController@check_code']);
 Route::get('/mentor/register', ['as'=>'master.register', 'uses'=>'MasterController@create']);
 Route::post('/register_mentor', ['as'=>'master.store', 'uses'=>'MasterController@store']);
 Route::get('/', ['as'=>'home', 'uses'=>'HomeController@home']);
 Route::post('question', ['as'=>'question.add', 'uses'=>'QuestionController@add']);
-// Route::get('/event/register/{slug}', ['as'=>'event.register', 'uses'=>'ParticipantController@form']);
+Route::get('/event/register/{slug}', ['as'=>'event.register', 'uses'=>'ParticipantController@form']);
 Route::post('/event/register', ['as'=>'event.register1', 'uses'=>'ParticipantController@register']);
 Route::post('/payment/verify', ['as'=>'callback', 'uses'=>'ParticipantController@callback']);
 

@@ -6,8 +6,45 @@
 @endsection
 
 @section('styles')
+<style>
+  .discount-code{
+    border-radius:0px!important;
+    height:50px;
+    font-size:20px!important;
+}
 
+.discount-input:focus{
+    border-color:green!important;
+}
 
+.discount-butt{
+  margin: 0px !important;
+    width:60px!important;
+    color:white!important;
+    background-color:#9C27B0!important;
+    border:2px solid #9C27B0!important;
+}
+
+.discount-butt:hover{
+    color:white!important;
+    background-color: #90133B!important;
+    border:2px solid #90133B!important;
+}
+.discount-butt:active{
+    color:white!important;
+    background-color: #90133B!important;
+    border:2px solid #90133B!important;
+}
+.discount-butt:focus{
+    color:white!important;
+    background-color: #90133B!important;
+    border:2px solid #90133B!important;
+}
+.myAlert-top {
+
+    top: 20px;
+}
+</style>
 @endsection
 
 @section('content')
@@ -103,6 +140,22 @@
                         </div>
                         <hr>
                         <div class="form-group">
+                          <label for="organization">
+                            سازمان محل کار:
+                            </label>
+                            <input type="text" class="form-control" id="organization" name="organization" placeholder="">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                          <label for="position">
+                            سمت در سازمان:
+                            </label>
+                            <input type="text" class="form-control" id="position" name="position"  placeholder="">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
                           <label for="know">
                              طریقه آشنایی با ما:
                             </label>
@@ -110,13 +163,31 @@
                             <div class="help-block with-errors"></div>
                         </div>
                         <hr>
+                        
+                        <div class="col-md-offset-3 col-md-6 col-md-offset-3">
+              						
+              					  <div class="input-group">
+              					  	
+              					    <input type="text" class="form-control discount-code discount-input" id="discount-code" style="border-left: none;height: 54px;" required placeholder="کد تخفیف دارید؟">
+              					    <div class="input-group-btn">
+              					      <a class="btn btn-default discount-code discount-butt" href="#"   title="اعمال">
+              					        <i class="fa fa-check" style="vertical-align:top"></i>
+              					      </a>
+              					    </div>
+              					  </div>
+              					  
+              					</div>
+              					<br>
+              					<input type="hidden" id="hidden-code" name="promocode" value="">
+              					<div class="col-md-12">
                         <div id="" class="text-center">
-                            <p style="font-size:150%;font-weight:bold">
+                            <p style="font-size:150%;font-weight:bold;margin-top:30px">
                                 هزینه ثبت نام:
-                                {{$event->price}}
+                                <span id="event-price">{{$event->price}}</span>
                                 تومان
                             </p>
                             
+                        </div>
                         </div>
                         <div id="" class="text-center">
                             <button style="width:50%;font-weight:bold;" type="submit" style="margin-top:10px;font-weight:bold" class="button btn-primary   btn-format">
@@ -157,7 +228,57 @@
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.7/validator.min.js"></script>
+<script>
+  $('body').on('click','.discount-butt',function(e) {
+	
+    e.preventDefault();
+    if( !$('#discount-code').val() ) {
+          $("#fixed-message").text("لطفا ابتدا کد تخفیف را وارد نمایید");
+          $(".myAlert-top").show();
+		  $(".myAlert-top").fadeOut(4000);
+    }
+    else{
+    	$.ajax({
+      url: "{{route('check.code')}}",
+      method: 'post',
+      data:{
 
+        code2: $('#discount-code').val(),
+        _token: "{{csrf_token()}}"
+      },
+      success: function(response){
+          // console.log(response);
+         
+          $('#discount').text(response.discount);
+          $('#subtotal').text(response.subtotal+parseInt($('#delivery_price').text()));
+          $("#fixed-message").text("کد تخفیف با موفقیت اعمال شد.");
+          $(".myAlert-top").show();
+			$(".myAlert-top").fadeOut(5000);
+			$('#event-price').text(response.subtotal);
+			$('input[name=promocode]').val(response.promocode);
+		// 	$('input[name=promocode]').val($('#discount-code').val());
+      },
+      error: function(xhr){
+      	
+        
+            // $('body').html(xhr.responseText);
+          //$("#main-cart").html(response);
+          $("#fixed-message").text(xhr.responseJSON.error);
+          $(".myAlert-top").show();
+		  $(".myAlert-top").fadeOut(4000);
+        // $('body').html(xhr.responseText)
+        // $("#all-addresses").html(xhr.responseText);
+        //  $("#mini-cart").html(xhr.responseText);
+      }
+      
+      
+    });
+    }
+    // console.log($('#discount-code').val());
+    
+
+});
+</script>
 
 @endsection
 
