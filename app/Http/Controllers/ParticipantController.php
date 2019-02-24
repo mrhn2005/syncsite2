@@ -125,7 +125,15 @@ class ParticipantController extends Controller
                 'factorNumber'  =>  $factor_number,
                 'participant_id'  =>  $participant->id,
                 'status' =>"SUCCESS",
-            ]);
+                ]);
+            try{
+                //  Mail::to($participant->email)->bcc(['mrhn2005@gmail.com','h.goudarzyen@gmail.com'])->send(new ParticipantRegistered($participant));
+                Mail::to($participant->email)->bcc('mrhn2005@gmail.com')->send(new ParticipantRegistered($participant));
+                Mail::to(['info@yasidea.ir'])->bcc('mrhn2005@gmail.com')->send(new ParticipantRegisteredAdmin($participant));
+                // session()->forget('participant');
+                }catch(\Exception $e){
+                
+            }
                 return redirect()->route('thankyou')->with(['success'=>'
                      پرداخت شما با موفقیت انجام شد.
                      از ثبت نام شما سپاسگزاریم.
@@ -266,6 +274,11 @@ class ParticipantController extends Controller
         }
 
         $amount = $promocode->event->price;
+        if(!$amount){
+            return response()->json(['error' => '
+            کد وارد شده اشتباه است.
+            '], 404);
+        }
         if ($promocode->is_fixed){
             if ($amount<$promocode->order_amount){
                  return response()->json(['error' => '

@@ -31,7 +31,7 @@ use App\Visit;
 use App\Toofan;
 use App\Group;
 use App\Promocode;
-
+use Carbon\Carbon;
 use Telegram\Bot\Laravel\Facades\Telegram;
 use Telegram\Bot\Api;
 use App\Gallery;
@@ -43,6 +43,21 @@ class HomeController extends Controller
     
     
     public function home(){
+        // $time = Carbon::now();
+        // $time = $time->addDays(300);
+        // for($i=1;$i<16; $i++){
+        //     $code=new Promocode();
+        //     $code->code="yas-babok-".substr(md5(microtime()),rand(0,26),5);
+        //     $code->expires_at=$time;
+        //     $code->max_uses=1;
+        //     $code->is_fixed=0;
+        //     $code->event_id=11;
+        //     $code->discount_amount=30;
+        //     $code->created_at=Carbon::now();
+        //     $code->updated_at=Carbon::now();
+        //     $code->save();
+        //     echo $code->code."<br>";
+        // }
         // $this->vmsTelegram('hi');
         // Telegram::sendMessage([
         //     'chat_id' =>"-221592990",
