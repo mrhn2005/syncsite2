@@ -66,7 +66,13 @@
         			</div>
         		</div>
         		<div class="col-md-8 col-md-offset-2 about-info" >
-
+        <p style="font-size:18px;font-weight:bold;text-align:center; color:red" >
+    			{{$event->date}}
+    			<br>
+    			
+    		</p>
+    			
+    		</p>
 			<p style="font-size:17px;text-align:justify; color:#888888" >
     			{{$event->desc}}
     			<br>
